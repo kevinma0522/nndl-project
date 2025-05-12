@@ -1,22 +1,3 @@
-# Multi-Label Image Classification: CNN vs MLP
-
-This repository contains the implementation of a comparative study between a CNN-based classifier and an MLP for multi-label image classification. The project is based on the research proposal by Thomas Chen and Kevin Ma from Columbia University.
-
-## Project Structure
-
-```
-.
-├── models/
-│   ├── cnn.py          # CNN model implementation
-│   └── mlp.py          # MLP model implementation
-├── utils/
-│   ├── data.py         # Data loading and preprocessing
-│   └── training.py     # Training utilities
-├── train.py            # Main training script
-├── requirements.txt    # Project dependencies
-└── README.md          # This file
-```
-
 ## Setup
 
 1. Create a virtual environment (recommended):
@@ -32,11 +13,30 @@ pip install -r requirements.txt
 
 ## Usage
 
+Prepare Data by running python3 prepare_data.py
+
+
 To train the models:
 
 ```bash
-python train.py --model cnn  # For CNN model
-python train.py --model mlp  # For MLP model
+python3 train.py \
+  --model cnn \
+  --data_dir ./dataset/images \
+  --super_labels ./dataset/super_labels.npy \
+  --sub_labels ./dataset/sub_labels.npy \
+  --num_super_classes 20 \
+  --num_sub_classes 100 \
+  --batch_size 32 \
+  --epochs 2  # For CNN model
+python3 train.py \
+  --model mlp \
+  --data_dir ./dataset/images \
+  --super_labels ./dataset/super_labels.npy \
+  --sub_labels ./dataset/sub_labels.npy \
+  --num_super_classes 20 \
+  --num_sub_classes 100 \
+  --batch_size 32 \
+  --epochs 20  # For MLP model
 ```
 
 ## Model Architectures
